@@ -158,7 +158,7 @@ def sem_analysis(img):
     porosity = 1 - np.sum(dilated / 255) / (h * w)
     # 计算空隙大小均匀性
     areas = []
-    contours, hierarchy = cv2.findContours(dilated.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    _, contours, hierarchy = cv2.findContours(dilated.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     for contour in contours:
         if cv2.contourArea(contour) < h * w * 0.5:  # 面积阈值
             areas.append(cv2.contourArea(contour))
